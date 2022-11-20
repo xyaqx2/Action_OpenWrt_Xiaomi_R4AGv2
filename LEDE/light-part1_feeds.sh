@@ -15,8 +15,6 @@
 
 # 添加插件源码 Add a feed source
 echo 'src-git small8 https://github.com/kenzok8/small-package' >>feeds.conf.default
-# batman-adv
-echo 'src-git batman-adv https://git.open-mesh.org/batman-adv.git' >>feeds.conf.default
 
 # Add Theme package
 rm -rf package/lean/luci-theme-argon

@@ -103,6 +103,12 @@ jobs:
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P1_SH
 
+        # batman-adv
+        src-git batman-adv https://git.open-mesh.org/batman-adv.git
+        scripts/feeds update
+        scripts/feeds install kmod-batman-adv
+        scripts/feeds install batctl
+
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
 
