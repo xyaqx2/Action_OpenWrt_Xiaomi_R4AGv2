@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: Built CSW-Lede-master-openvpnOnly-R4AGv2
+name: Built CSW-Lede-master-R4AGv2
 
 on:
   repository_dispatch:
