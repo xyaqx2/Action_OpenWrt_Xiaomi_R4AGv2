@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: Built2 CSW-Lede-R22.10.1-R4AGv2.yml
+name: Built CSW-Lede-R22.10.1-R4AGv2.yml
 
 on:
   repository_dispatch:
