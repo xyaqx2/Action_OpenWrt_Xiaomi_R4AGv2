@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: Built R4AGv2 Openwrt v22.03.2
+name: Built Openwrt-v22.03.2-R4AGv2
 
 on:
   repository_dispatch:
@@ -22,16 +22,16 @@ on:
 env:
   REPO_URL: https://github.com/openwrt/openwrt.git
   REPO_BRANCH: v22.03.2
-  FEEDS_CONF: Opwt_v22.03.02_feeds.conf.default
-  CONFIG_FILE: Opwt-R4AGv2.config
-  DIY_P1_SH: Opwt-p1_feeds.sh
-  DIY_P2_SH: Opwt-p2_config.sh
-  DIY_P3_SH: Opwt-p3_mv.sh
+  FEEDS_CONF: opwrt-22.03.2/Opwrt_v22.03.02_feeds.conf.default
+  CONFIG_FILE: opwrt-22.03.2/Opwrt-R4AGv2.config
+  DIY_P1_SH: opwrt-22.03.2/Opwrt-p1_feeds.sh
+  DIY_P2_SH: opwrt-22.03.2/Opwrt-p2_config.sh
+  DIY_P3_SH: opwrt-22.03.2/Opwrt-p3_mv.sh
   PATCH_FILE: 476-mtd-spi-nor-add-eon-en25q128.patch
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
   UPLOAD_COWTRANSFER: false
-  UPLOAD_WETRANSFER: true
+  UPLOAD_WETRANSFER: false
   UPLOAD_RELEASE: true
   TZ: Asia/Shanghai
 
@@ -47,10 +47,10 @@ jobs:
       env:
         DEBIAN_FRONTEND: noninteractive
       run: |
-        #sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
+        sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
         sudo -E apt-get -qq update 
 
-        sudo -E apt-get -qq install asciidoc  patch  python2.7 lib32gcc1 libc6-dev-i386 uglifyjs git-core \
+        sudo -E apt-get -qq install asciidoc patch python2.7 lib32gcc1 libc6-dev-i386 uglifyjs git-core \
         p7zip p7zip-full msmtp texinfo libglib2.0-dev xmlto qemu-utils upx autoconf automake libtool autopoint \
         device-tree-compiler g++-multilib antlr3 gperf curl  
 
@@ -78,25 +78,25 @@ jobs:
     - name: Upload Files for Hardware Changes 
       run: |
         # SPI HW: 476-mtd-spi-nor-add-eon-en25q128
-        cp $GITHUB_WORKSPACE/hw/5.10/$PATCH_FILE $GITHUB_WORKSPACE/openwrt/target/linux/generic/pending-5.10/$PATCH_FILE
+        cp $GITHUB_WORKSPACE/opwrt-22.03.2/hw2add/$PATCH_FILE $GITHUB_WORKSPACE/openwrt/target/linux/generic/pending-5.10/$PATCH_FILE
 
         # Copy config-5.10
-        cp $GITHUB_WORKSPACE/hw/5.10/config-5.10 $GITHUB_WORKSPACE/openwrt/target/linux/ramips/mt7621/config-5.10
+        #cp $GITHUB_WORKSPACE/opwrt-22.03.2/hw2add/config-5.10 $GITHUB_WORKSPACE/openwrt/target/linux/ramips/mt7621/config-5.10
         
         # REMOVE 499-mtd-spi-nor-add-xmc-xm25qh128c.patch
         #rm -f $GITHUB_WORKSPACE/openwrt/target/linux/generic/pending-5.10/499-mtd-spi-nor-add-xmc-xm25qh128c.patch
         
         # Upload mt7621_xiaomi_mi-router-4a-gigabit-v2.dts
-        cp -f $GITHUB_WORKSPACE/hw/mt7621_xiaomi_mi-router-4a-gigabit-v2.dts $GITHUB_WORKSPACE/openwrt/target/linux/ramips/dts
+        cp -f $GITHUB_WORKSPACE/opwrt-22.03.2/hw2add/mt7621_xiaomi_mi-router-4a-gigabit-v2.dts $GITHUB_WORKSPACE/openwrt/target/linux/ramips/dts
 
         # Upload mt7621.mk
-        cp -f $GITHUB_WORKSPACE/hw/mt7621.mk $GITHUB_WORKSPACE/openwrt/target/linux/ramips/image
+        cp -f $GITHUB_WORKSPACE/opwrt-22.03.2/hw2add/mt7621.mk $GITHUB_WORKSPACE/openwrt/target/linux/ramips/image
 
         ## Upload 01_leds
-        cp -f $GITHUB_WORKSPACE/hw/01_leds $GITHUB_WORKSPACE/openwrt/target/linux/ramips/mt7621/base-files/etc/board.d
+        cp -f $GITHUB_WORKSPACE/opwrt-22.03.2/hw2add/01_leds $GITHUB_WORKSPACE/openwrt/target/linux/ramips/mt7621/base-files/etc/board.d
 
         # Upload 02_network
-        cp -f $GITHUB_WORKSPACE/hw/02_network $GITHUB_WORKSPACE/openwrt/target/linux/ramips/mt7621/base-files/etc/board.d
+        cp -f $GITHUB_WORKSPACE/opwrt-22.03.2/hw2add/02_network $GITHUB_WORKSPACE/openwrt/target/linux/ramips/mt7621/base-files/etc/board.d
 
 
     - name: Load custom feeds
