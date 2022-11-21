@@ -1,7 +1,10 @@
 
 ## Xiaomi R4AGv2 Hardware changed! Breed Flash 直刷版 (R4A Gigabit,R4AG_V2, R4AG V2)
-
-
+### There are two types of firmware [releases](https://github.com/MrTaiKe/Action_OpenWrt_Xiaomi_R4AGv2/releases)
+    1. CSW-LEDE-R22.10.1 Kernel 5.4.214 (use coolsnowwolf/lede R22.10.1)
+    2. Openwrt-v22.03.2 Kernel_5.10.146 (use openwrt stable releases v22.03.2)
+    
+### Projects divided into two seperate folders, LEDE and opwrt-22.03.2
 
 ![image](https://user-images.githubusercontent.com/117250841/200182184-1374ebfe-cca5-40fb-a7ca-4eaa1444f2f0.png)
 
