@@ -81,7 +81,7 @@ jobs:
     - name: Upload Files for Hardware Changes 
       run: |
         # SPI HW: 476-mtd-spi-nor-add-eon-en25q128
-        cp $GITHUB_WORKSPACE/opwrt-23.05/hw2add/$PATCH_FILE $GITHUB_WORKSPACE/openwrt/target/linux/generic/pending-5.10/$PATCH_FILE
+        cp $GITHUB_WORKSPACE/opwrt-23.05/hw2add/$PATCH_FILE $GITHUB_WORKSPACE/openwrt/target/linux/generic/pending-5.15/$PATCH_FILE
 
         # Copy config-5.10
         #cp $GITHUB_WORKSPACE/opwrt-23.05/hw2add/config-5.10 $GITHUB_WORKSPACE/openwrt/target/linux/ramips/mt7621/config-5.10
