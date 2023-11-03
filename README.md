@@ -58,11 +58,24 @@ Successfully used @LordPinhead's code [commit #99634522](https://github.com/acec
 ###  Step#3 How to Use BREED web to flash 
 
 ```
-1. Hold & press reset, power on
-2. Open browser, go to 192.168.1.1 for Breed Web Page
-3. Flash these two bin files together at the same time! 
+1. Connect Ethernet Cable to LAN port rather than WAN port.
+2. Hold & press reset, power on
+3. Open browser, go to 192.168.1.1 for Breed Web Page
+4. Flash these two bin files together at the same time! 
     - eeprom.bin
     - openwrt-ramips-mt7621-xiaomi_mi-router-4a-gigabit-v2-squashfs-sysupgrade.bin
 ```
 ![image](https://user-images.githubusercontent.com/117250841/200181428-b9628072-b1d6-4f23-a799-3b06c63c12bb.png)
 ![image](https://user-images.githubusercontent.com/117250841/200880220-1ed7a02a-c35b-4cd6-ba71-a6c85778a572.jpeg)
+
+```
+1. Connect Ethernet Cable to LAN port rather than WAN port
+2. PLEASE NOTE: router IP might be changed to 192.168.31.1
+3. If Router doesn't have DHCP enabled, you will need to manually assign IP
+For example:
+    If router's IP is 192.168.1.2
+    Manually assign your computer's ip to be: 
+    192.168.1.88
+    255.255.0.0
+```
+
