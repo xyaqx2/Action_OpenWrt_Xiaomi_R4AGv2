@@ -77,5 +77,8 @@ For example:
     Manually assign your computer's ip to be: 
     192.168.1.88
     255.255.255.0
+    
+    Default wifi SSID: WiFi_R4AGv2
+    Defulat wifi Key: password
 ```
 
