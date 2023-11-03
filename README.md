@@ -71,11 +71,11 @@ Successfully used @LordPinhead's code [commit #99634522](https://github.com/acec
 ```
 1. Connect Ethernet Cable to LAN port rather than WAN port
 2. PLEASE NOTE: router IP might be changed to 192.168.31.1
-3. If Router doesn't have DHCP enabled, you will need to manually assign IP
+3. If Router doesn't have DHCP enabled, you will need to manually assign IP to talk to your router:
 For example:
     If router's IP is 192.168.1.2
     Manually assign your computer's ip to be: 
     192.168.1.88
-    255.255.0.0
+    255.255.255.0
 ```
 
