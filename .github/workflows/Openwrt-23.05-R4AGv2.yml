@@ -134,6 +134,7 @@ jobs:
       run: |
         cp $GITHUB_WORKSPACE/opwrt-23.05/hw2add/xiaomi-r4agv2-openwrt_patch-22.03.3/4a-gigabit-v2_openwrt.patch $GITHUB_WORKSPACE/openwrt/4a-gigabit-v2_openwrt.patch
         cd openwrt
+        dir
         patch -p0 -N --dry-run < 4a-gigabit-v2_openwrt.patch
         
 
