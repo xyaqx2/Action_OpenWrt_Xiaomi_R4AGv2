@@ -73,9 +73,6 @@ jobs:
         #git clone $REPO_URL -b $REPO_BRANCH openwrt
         git clone --single-branch --branch $REPO_BRANCH $REPO_URL openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
-
-        cd openwrt/include/
-        dir -f
         
         echo workdir
         echo $REPO_URL
@@ -83,30 +80,21 @@ jobs:
         
     - name: Upload Files for Hardware Changes 
       run: |
-        # SPI HW: 476-mtd-spi-nor-add-eon-en25q128
-        #cp $GITHUB_WORKSPACE/opwrt-23.05/hw2add/$PATCH_FILE $GITHUB_WORKSPACE/openwrt/target/linux/generic/pending-5.15/$PATCH_FILE
-
-        # Copy config-5.10
-        #cp $GITHUB_WORKSPACE/opwrt-23.05/hw2add/config-5.10 $GITHUB_WORKSPACE/openwrt/target/linux/ramips/mt7621/config-5.10
-        
-        # REMOVE 499-mtd-spi-nor-add-xmc-xm25qh128c.patch
-        #rm -f $GITHUB_WORKSPACE/openwrt/target/linux/generic/pending-5.10/499-mtd-spi-nor-add-xmc-xm25qh128c.patch
+        # Upload 01_leds
+        cp -f $GITHUB_WORKSPACE/opwrt-23.05/hw2add/01_leds $GITHUB_WORKSPACE/openwrt/target/linux/ramips/mt7621/base-files/etc/board.d
+  
+        # Upload 02_network
+        cp -f $GITHUB_WORKSPACE/opwrt-23.05/hw2add/02_network $GITHUB_WORKSPACE/openwrt/target/linux/ramips/mt7621/base-files/etc/board.d
+  
+        # Upload kernel-defaults.mk
+        cp -f $GITHUB_WORKSPACE/opwrt-23.05/hw2add/kernel-defaults.mk $GITHUB_WORKSPACE/openwrt/include
         
         # Upload mt7621_xiaomi_mi-router-4a-gigabit-v2.dts
-        #cp -f $GITHUB_WORKSPACE/opwrt-23.05/hw2add/mt7621_xiaomi_mi-router-4a-gigabit-v2.dts $GITHUB_WORKSPACE/openwrt/target/linux/ramips/dts
-
+        cp -f $GITHUB_WORKSPACE/opwrt-23.05/hw2add/mt7621_xiaomi_mi-router-4a-gigabit-v2.dts $GITHUB_WORKSPACE/openwrt/target/linux/ramips/dts
+                                                                                                                      
         # Upload mt7621.mk
-        #cp -f $GITHUB_WORKSPACE/opwrt-23.05/hw2add/mt7621.mk $GITHUB_WORKSPACE/openwrt/target/linux/ramips/image
-
-        ## Upload 01_leds
-        #cp -f $GITHUB_WORKSPACE/opwrt-23.05/hw2add/01_leds $GITHUB_WORKSPACE/openwrt/target/linux/ramips/mt7621/base-files/etc/board.d
-
-        # Upload 02_network
-        #cp -f $GITHUB_WORKSPACE/opwrt-23.05/hw2add/02_network $GITHUB_WORKSPACE/openwrt/target/linux/ramips/mt7621/base-files/etc/board.d
+        cp -f $GITHUB_WORKSPACE/opwrt-23.05/hw2add/mt7621.mk $GITHUB_WORKSPACE/openwrt/target/linux/ramips/image
         
-        
-
-
     - name: Load custom feeds
       run: |
         [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
@@ -133,14 +121,11 @@ jobs:
         chmod +x $DIY_P3_SH
         $GITHUB_WORKSPACE/$DIY_P3_SH
 
-    - name: Apply a Patch
-      run: |
-        cp $GITHUB_WORKSPACE/opwrt-23.05/hw2add/xiaomi-r4agv2-openwrt_patch-22.03.3/4a-gigabit-v2_openwrt.patch $GITHUB_WORKSPACE/openwrt/4a-gigabit-v2_openwrt.patch
-        cd openwrt
-        dir -f
-        patch -p10 -N --dry-run < 4a-gigabit-v2_openwrt.patch
+    # - name: Apply a Patch
+    #   run: |
+    #     cp $GITHUB_WORKSPACE/opwrt-23.05/hw2add/xiaomi-r4agv2-openwrt_patch-22.03.3/4a-gigabit-v2_openwrt.patch $GITHUB_WORKSPACE/openwrt/4a-gigabit-v2_openwrt.patch
+    #     patch -p0 -N --dry-run < 4a-gigabit-v2_openwrt.patch
         
-
     - name: SSH connection to Actions
       uses: P3TERX/ssh2actions@v1.0.0
       if: (github.event.inputs.ssh == 'true' && github.event.inputs.ssh  != 'false') || contains(github.event.action, 'ssh')
