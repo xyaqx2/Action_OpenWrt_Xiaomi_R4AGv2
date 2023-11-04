@@ -1,5 +1,5 @@
---- a/include/kernel-defaults.mk	2023-01-04 01:03:37.000000000 +0400
-+++ b/include/kernel-defaults.mk	2023-01-07 20:50:25.832841866 +0400
+--- a/include/kernel-defaults.mk 2023-01-04 01:03:37.000000000 +0400
++++ b/include/kernel-defaults.mk 2023-01-07 20:50:25.832841866 +0400
 @@ -118,7 +118,8 @@
  		cp $(LINUX_DIR)/.config.set $(LINUX_DIR)/.config.prev; \
  	}
@@ -202,8 +202,8 @@
 +		reg = <0xe006 0x6>;
 +	};
 +};
---- a/target/linux/ramips/image/mt7621.mk	2023-01-04 01:03:37.000000000 +0400
-+++ b/target/linux/ramips/image/mt7621.mk	2023-01-07 20:54:46.275004545 +0400
+--- a/target/linux/ramips/image/mt7621.mk 2023-01-04 01:03:37.000000000 +0400
++++ b/target/linux/ramips/image/mt7621.mk 2023-01-07 20:54:46.275004545 +0400
 @@ -2011,6 +2011,17 @@
  endef
  TARGET_DEVICES += xiaomi_mi-router-4a-gigabit
@@ -222,8 +222,8 @@
  define Device/xiaomi_mi-router-ac2100
    $(Device/xiaomi_nand_separate)
    DEVICE_MODEL := Mi Router AC2100
---- a/target/linux/ramips/mt7621/base-files/etc/board.d/02_network	2023-01-04 01:03:37.000000000 +0400
-+++ b/target/linux/ramips/mt7621/base-files/etc/board.d/02_network	2023-01-07 20:57:05.249479798 +0400
+--- a/target/linux/ramips/mt7621/base-files/etc/board.d/02_network 2023-01-04 01:03:37.000000000 +0400
++++ b/target/linux/ramips/mt7621/base-files/etc/board.d/02_network 2023-01-07 20:57:05.249479798 +0400
 @@ -58,7 +58,8 @@
  	xiaomi,mi-router-3g|\
  	xiaomi,mi-router-3g-v2|\
