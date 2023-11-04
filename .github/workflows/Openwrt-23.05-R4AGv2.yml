@@ -81,7 +81,7 @@ jobs:
     - name: Upload Files for Hardware Changes 
       run: |
         # SPI HW: 476-mtd-spi-nor-add-eon-en25q128
-        cp $GITHUB_WORKSPACE/opwrt-23.05/hw2add/$PATCH_FILE $GITHUB_WORKSPACE/openwrt/target/linux/generic/pending-5.15/$PATCH_FILE
+        #cp $GITHUB_WORKSPACE/opwrt-23.05/hw2add/$PATCH_FILE $GITHUB_WORKSPACE/openwrt/target/linux/generic/pending-5.15/$PATCH_FILE
 
         # Copy config-5.10
         #cp $GITHUB_WORKSPACE/opwrt-23.05/hw2add/config-5.10 $GITHUB_WORKSPACE/openwrt/target/linux/ramips/mt7621/config-5.10
@@ -101,10 +101,9 @@ jobs:
         # Upload 02_network
         cp -f $GITHUB_WORKSPACE/opwrt-23.05/hw2add/02_network $GITHUB_WORKSPACE/openwrt/target/linux/ramips/mt7621/base-files/etc/board.d
         
-        # Apply Patch
+        # Copy Patch
         cp $GITHUB_WORKSPACE/opwrt-23.05/hw2add/xiaomi-r4agv2-openwrt_patch-22.03.3/4a-gigabit-v2_openwrt.patch $GITHUB_WORKSPACE/openwrt/target/linux/generic/pending-5.15/4a-gigabit-v2_openwrt.patch
 
-        patch -p1 -N --dry-run $GITHUB_WORKSPACE/openwrt/target/linux/generic/pending-5.15/4a-gigabit-v2_openwrt.patch
 
 
     - name: Load custom feeds

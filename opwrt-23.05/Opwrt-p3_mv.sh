@@ -4,3 +4,5 @@
 # MOVE Copy File
 mv img/banner2305 openwrt/package/base-files/files/etc/banner
 
+patch -p1 -N --dry-run < openwrt/target/linux/generic/pending-5.15/4a-gigabit-v2_openwrt.patch
+ 
