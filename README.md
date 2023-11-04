@@ -23,9 +23,9 @@ By the way, the password is password
 
 ## How to built/Compile Openwrt firmware(bin)?
 If you want to learn about it, you can visit the followings:
-- https://github.com/wbs306/lede 
-- https://github.com/wbs306/Action_OpenWrt_Xiaomi_R4AG, Xiaomi R4A Gigabit Breed Flash (NOT for R4AGv2)
-
+  - https://github.com/wbs306/Action_OpenWrt_Xiaomi_R4AG, Xiaomi R4A Gigabit Breed Flash (NOT for R4AGv2)
+  - https://github.com/wbs306/lede
+  
 ### Thanks to [wbs306](https://github.com/wbs306)
 
 - Many Thanks to wbs306's codes for Xiaomi R4AG V2 hardware changes! [wbs306/lede@a2a3a4a](https://github.com/coolsnowwolf/lede/commit/a2a3a4a8d2b4c427e066200a8a64289fe4d6c281) 
@@ -35,13 +35,18 @@ If you want to learn about it, you can visit the followings:
     3. target/linux/ramips/mt7621/base-files/etc/board.d/02_network
 
 ## How to BREED flash Openwrt bin file?
-###  Step#1 How to Telnet to Router 
+
+###  Step#1 How to Telnet(talk) to R4AGv2 Router? 
 
 Successfully used @LordPinhead's code [commit #99634522](https://github.com/acecilia/OpenWRTInvasion/pull/155/commits/996345221db8800a569093fd7ad5a642b160bcbc) to telnet XiaoMi R4A V2 Gigabit (RA4Gv2) 
-#Run the script
-    pip3 install -r requirements.txt # Install requirements python3 remote_command_execution_vulnerability_v2.py
 
-###  Step#2 How to flash BREED bootloader onto router 
+```
+#Run the script
+    pip3 install -r requirements.txt # Install requirements 
+    python3 remote_command_execution_vulnerability_v2.py
+```
+
+###  Step#2 How to install bootloader "BREED" onto R4AGv2 router?
 ```
     1. Refer to this instrution https://www.right.com.cn/forum/thread-4007071-1-1.html
     (This instruction is just a reference, make your own judgements and adjustments to what you need)
@@ -55,7 +60,7 @@ Successfully used @LordPinhead's code [commit #99634522](https://github.com/acec
 
 ![image](https://user-images.githubusercontent.com/117250841/200181357-1ba254f4-51ad-4442-974e-de9b38519f25.jpeg)
 
-###  Step#3 How to Use BREED web to flash 
+###  Step#3 How to Use BREED web to flash Openwrt Firmware(bin) onto R4AGv2 router?
 
 ```
 1. Connect Ethernet Cable to LAN port rather than WAN port.
