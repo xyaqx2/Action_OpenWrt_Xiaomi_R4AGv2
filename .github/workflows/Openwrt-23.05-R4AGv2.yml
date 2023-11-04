@@ -102,7 +102,9 @@ jobs:
         cp -f $GITHUB_WORKSPACE/opwrt-23.05/hw2add/02_network $GITHUB_WORKSPACE/openwrt/target/linux/ramips/mt7621/base-files/etc/board.d
         
         # Apply Patch
-        patch -p1 -N --dry-run < $GITHUB_WORKSPACE/opwrt-23.05/hw2add/xiaomi-r4agv2-openwrt_patch-22.03.3/4a-gigabit-v2_openwrt.patch
+        cp $GITHUB_WORKSPACE/opwrt-23.05/hw2add/xiaomi-r4agv2-openwrt_patch-22.03.3/4a-gigabit-v2_openwrt.patch $GITHUB_WORKSPACE/openwrt/target/linux/generic/pending-5.15/4a-gigabit-v2_openwrt.patch
+
+        patch -p1 -N --dry-run $GITHUB_WORKSPACE/openwrt/target/linux/generic/pending-5.15/4a-gigabit-v2_openwrt.patch
 
 
     - name: Load custom feeds
