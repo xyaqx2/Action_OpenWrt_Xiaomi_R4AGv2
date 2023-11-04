@@ -132,9 +132,9 @@ jobs:
 
     - name: Apply a Patch
       run: |
-        cd $GITHUB_WORKSPACE
-        cp $GITHUB_WORKSPACE/opwrt-23.05/hw2add/xiaomi-r4agv2-openwrt_patch-22.03.3/4a-gigabit-v2_openwrt.patch $GITHUB_WORKSPACE/4a-gigabit-v2_openwrt.patch
-        patch -p0 < $GITHUB_WORKSPACE/4a-gigabit-v2_openwrt.patch
+        cd openwrt
+        cp $GITHUB_WORKSPACE/opwrt-23.05/hw2add/xiaomi-r4agv2-openwrt_patch-22.03.3/4a-gigabit-v2_openwrt.patch $GITHUB_WORKSPACE/openwrt/4a-gigabit-v2_openwrt.patch
+        patch -p0 < $GITHUB_WORKSPACE/openwrt/4a-gigabit-v2_openwrt.patch
         
 
     - name: SSH connection to Actions
