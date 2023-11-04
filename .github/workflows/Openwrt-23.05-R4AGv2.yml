@@ -74,6 +74,9 @@ jobs:
         git clone --single-branch --branch $REPO_BRANCH $REPO_URL openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
 
+        cd openwrt/include/
+        dir -f
+        
         echo workdir
         echo $REPO_URL
         echo $GITHUB_WORKSPACE
@@ -133,8 +136,6 @@ jobs:
     - name: Apply a Patch
       run: |
         cp $GITHUB_WORKSPACE/opwrt-23.05/hw2add/xiaomi-r4agv2-openwrt_patch-22.03.3/4a-gigabit-v2_openwrt.patch $GITHUB_WORKSPACE/openwrt/4a-gigabit-v2_openwrt.patch
-        cd openwrt/include/
-        dir -f
         cd openwrt
         dir -f
         patch -p10 -N --dry-run < 4a-gigabit-v2_openwrt.patch
