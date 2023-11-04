@@ -10,6 +10,7 @@
  endef
  
  define Kernel/Configure/Initramfs
+ 
 --- a/target/linux/ramips/dts/mt7621_xiaomi_mi-router-4a-gigabit-v2.dts	1970-01-01 04:00:00.000000000 +0400
 +++ b/target/linux/ramips/dts/mt7621_xiaomi_mi-router-4a-gigabit-v2.dts	2022-12-17 04:27:21.334200000 +0400
 @@ -0,0 +1,189 @@
@@ -202,6 +203,7 @@
 +		reg = <0xe006 0x6>;
 +	};
 +};
+
 --- a/target/linux/ramips/image/mt7621.mk
 +++ b/target/linux/ramips/image/mt7621.mk
 @@ -2011,6 +2011,17 @@
@@ -222,6 +224,7 @@
  define Device/xiaomi_mi-router-ac2100
    $(Device/xiaomi_nand_separate)
    DEVICE_MODEL := Mi Router AC2100
+
 --- a/target/linux/ramips/mt7621/base-files/etc/board.d/02_network
 +++ b/target/linux/ramips/mt7621/base-files/etc/board.d/02_network
 @@ -58,7 +58,8 @@
@@ -234,6 +237,7 @@
  		ucidef_set_interfaces_lan_wan "lan1 lan2" "wan"
  		;;
  	bolt,arion)
+
 --- a/target/linux/ramips/mt7621/base-files/etc/board.d/01_leds
 +++ b/target/linux/ramips/mt7621/base-files/etc/board.d/01_leds
 @@ -132,6 +132,9 @@
