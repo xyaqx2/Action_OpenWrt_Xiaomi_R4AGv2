@@ -113,7 +113,6 @@ TARGET_DEVICES += adslr_g7
 
 define Device/afoundry_ew1200
   $(Device/dsa-migration)
-  $(Device/uimage-lzma-loader)
   IMAGE_SIZE := 16064k
   DEVICE_VENDOR := AFOUNDRY
   DEVICE_MODEL := EW1200
@@ -241,8 +240,6 @@ define Device/asus_rt-ax53u
   $(Device/dsa-migration)
   DEVICE_VENDOR := ASUS
   DEVICE_MODEL := RT-AX53U
-  DEVICE_ALT0_VENDOR := ASUS
-  DEVICE_ALT0_MODEL := RT-AX1800U
   IMAGE_SIZE := 51200k
   UBINIZE_OPTS := -E 5
   BLOCKSIZE := 128k
@@ -252,8 +249,7 @@ define Device/asus_rt-ax53u
   IMAGE/sysupgrade.bin := sysupgrade-tar | append-metadata
   IMAGE/factory.bin := append-kernel | pad-to $$(KERNEL_SIZE) | append-ubi | \
 	check-size
-  DEVICE_PACKAGES := kmod-mt7915e kmod-usb3 uboot-envtools \
-	kmod-usb-ledtrig-usbport
+  DEVICE_PACKAGES := kmod-mt7915e kmod-usb3 uboot-envtools
 endef
 TARGET_DEVICES += asus_rt-ax53u
 
@@ -306,7 +302,6 @@ TARGET_DEVICES += buffalo_wsr-2533dhpl
 
 define Device/buffalo_wsr-600dhp
   $(Device/dsa-migration)
-  $(Device/uimage-lzma-loader)
   IMAGE_SIZE := 16064k
   DEVICE_VENDOR := Buffalo
   DEVICE_MODEL := WSR-600DHP
@@ -354,27 +349,6 @@ define Device/cudy_x6
   DEVICE_PACKAGES := kmod-mt7915e
 endef
 TARGET_DEVICES += cudy_x6
-
-define Device/dlink_dap-x1860-a1
-  $(Device/dsa-migration)
-  IMAGE_SIZE := 53248k
-  DEVICE_VENDOR := D-Link
-  DEVICE_MODEL := DAP-X1860
-  DEVICE_VARIANT := A1
-  UBINIZE_OPTS := -E 5
-  BLOCKSIZE := 128k
-  PAGESIZE := 2048
-  KERNEL_SIZE := 8192k
-  KERNEL_LOADADDR := 0x82000000
-  KERNEL := kernel-bin | relocate-kernel 0x80001000 | lzma | \
-	fit lzma $$(KDIR)/image-$$(firstword $$(DEVICE_DTS)).dtb
-  IMAGES += factory.bin
-  IMAGE/sysupgrade.bin := sysupgrade-tar | append-metadata
-  IMAGE/factory.bin := append-kernel | pad-to $$(KERNEL_SIZE) | append-ubi | \
-	check-size | elx-header 011b0060 8844A2D168B45A2D
-  DEVICE_PACKAGES := kmod-mt7915e rssileds
-endef
-TARGET_DEVICES += dlink_dap-x1860-a1
 
 define Device/dlink_dir-8xx-a1
   $(Device/dsa-migration)
@@ -1169,19 +1143,6 @@ define Device/mediatek_mt7621-eval-board
 endef
 TARGET_DEVICES += mediatek_mt7621-eval-board
 
-define Device/mercusys_mr70x-v1
-  $(Device/dsa-migration)
-  $(Device/tplink-safeloader)
-  DEVICE_VENDOR := Mercusys
-  DEVICE_MODEL := MR70X
-  DEVICE_VARIANT := v1
-  DEVICE_PACKAGES := kmod-mt7915e -uboot-envtools
-  TPLINK_BOARD_ID := MR70X
-  KERNEL := $(KERNEL_DTB) | uImage lzma
-  IMAGE_SIZE := 15744k
-endef
-TARGET_DEVICES += mercusys_mr70x-v1
-
 define Device/MikroTik
   $(Device/dsa-migration)
   DEVICE_VENDOR := MikroTik
@@ -1669,18 +1630,6 @@ define Device/totolink_x5000r
   DEVICE_PACKAGES := kmod-mt7915e
 endef
 TARGET_DEVICES += totolink_x5000r
-
-define Device/tplink_archer-ax23-v1
-  $(Device/dsa-migration)
-  $(Device/tplink-safeloader)
-  DEVICE_MODEL := Archer AX23
-  DEVICE_VARIANT := v1
-  DEVICE_PACKAGES := kmod-mt7915e -uboot-envtools
-  TPLINK_BOARD_ID := ARCHER-AX23-V1
-  KERNEL := $(KERNEL_DTB) | uImage lzma
-  IMAGE_SIZE := 15744k
-endef
-TARGET_DEVICES += tplink_archer-ax23-v1
 
 define Device/tplink_archer-a6-v3
   $(Device/dsa-migration)
