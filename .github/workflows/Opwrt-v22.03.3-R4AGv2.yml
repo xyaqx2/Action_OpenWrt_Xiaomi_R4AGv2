@@ -82,7 +82,7 @@ jobs:
 
         # Upload 02_network
         cp -f $GITHUB_WORKSPACE/opwrt-22.03.3/hw2add/02_network $GITHUB_WORKSPACE/openwrt/target/linux/ramips/mt7621/base-files/etc/board.d
-
+        
         # Upload kernel-defaults.mk
         cp -f $GITHUB_WORKSPACE/opwrt-22.03.3/hw2add/kernel-defaults.mk $GITHUB_WORKSPACE/openwrt/include
         
@@ -91,7 +91,6 @@ jobs:
                                                                                                                       
         # Upload mt7621.mk
         cp -f $GITHUB_WORKSPACE/opwrt-22.03.3/hw2add/mt7621.mk $GITHUB_WORKSPACE/openwrt/target/linux/ramips/image
-
 
     - name: Load custom feeds
       run: |
