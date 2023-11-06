@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: Built Openwrt-23.05-R4AGv2
+name: Built Openwrt-v23.05-R4AGv2
 
 on:
   repository_dispatch:
@@ -22,7 +22,7 @@ on:
 env:
   REPO_URL: https://github.com/openwrt/openwrt.git
   REPO_BRANCH: v23.05.0
-  FEEDS_CONF: opwrt-23.05/Opwrt_v23.05_feeds.conf.default
+  FEEDS_CONF: opwrt-23.05/Opwrt-23.05_feeds.conf.default
   CONFIG_FILE: opwrt-23.05/Opwrt-R4AGv2.config
   DIY_P1_SH: opwrt-23.05/Opwrt-p1_feeds.sh
   DIY_P2_SH: opwrt-23.05/Opwrt-p2_config.sh
@@ -78,22 +78,22 @@ jobs:
         echo $REPO_URL
         echo $GITHUB_WORKSPACE
         
-    # - name: Upload Files for Hardware Changes 
-    #   run: |
-    #     # Upload 01_leds
-    #     #cp -f $GITHUB_WORKSPACE/opwrt-23.05/hw2add/01_leds $GITHUB_WORKSPACE/openwrt/target/linux/ramips/mt7621/base-files/etc/board.d
+    - name: Upload Files for Hardware Changes 
+      run: |
+        # Upload 01_leds
+        cp -f $GITHUB_WORKSPACE/opwrt-23.05/hw2add/01_leds $GITHUB_WORKSPACE/openwrt/target/linux/ramips/mt7621/base-files/etc/board.d
   
-    #     # Upload 02_network
-    #     #cp -f $GITHUB_WORKSPACE/opwrt-23.05/hw2add/02_network $GITHUB_WORKSPACE/openwrt/target/linux/ramips/mt7621/base-files/etc/board.d
+        # Upload 02_network
+        cp -f $GITHUB_WORKSPACE/opwrt-23.05/hw2add/02_network $GITHUB_WORKSPACE/openwrt/target/linux/ramips/mt7621/base-files/etc/board.d
   
-    #     # Upload kernel-defaults.mk
-    #     #cp -f $GITHUB_WORKSPACE/opwrt-23.05/hw2add/kernel-defaults.mk $GITHUB_WORKSPACE/openwrt/include
+        # Upload kernel-defaults.mk
+        cp -f $GITHUB_WORKSPACE/opwrt-23.05/hw2add/kernel-defaults.mk $GITHUB_WORKSPACE/openwrt/include
         
-    #     # Upload mt7621_xiaomi_mi-router-4a-gigabit-v2.dts
-    #     cp -f $GITHUB_WORKSPACE/opwrt-23.05/hw2add/mt7621_xiaomi_mi-router-4a-gigabit-v2.dts $GITHUB_WORKSPACE/openwrt/target/linux/ramips/dts
+        # Upload mt7621_xiaomi_mi-router-4a-gigabit-v2.dts
+        cp -f $GITHUB_WORKSPACE/opwrt-23.05/hw2add/mt7621_xiaomi_mi-router-4a-gigabit-v2.dts $GITHUB_WORKSPACE/openwrt/target/linux/ramips/dts
                                                                                                                       
-    #     # Upload mt7621.mk
-    #     cp -f $GITHUB_WORKSPACE/opwrt-23.05/hw2add/mt7621.mk $GITHUB_WORKSPACE/openwrt/target/linux/ramips/image
+        # Upload mt7621.mk
+        cp -f $GITHUB_WORKSPACE/opwrt-23.05/hw2add/mt7621.mk $GITHUB_WORKSPACE/openwrt/target/linux/ramips/image
         
     - name: Load custom feeds
       run: |
