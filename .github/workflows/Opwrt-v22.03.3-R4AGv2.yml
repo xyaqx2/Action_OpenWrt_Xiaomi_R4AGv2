@@ -93,8 +93,8 @@ jobs:
         cp -f $GITHUB_WORKSPACE/opwrt-22.03.3/hw2add/mt7621.mk $GITHUB_WORKSPACE/openwrt/target/linux/ramips/image
 
         # SPI HW: 476-mtd-spi-nor-add-eon-en25q128
-        cp $GITHUB_WORKSPACE/opwrt-22.03.2/hw2add/$PATCH_FILE $GITHUB_WORKSPACE/openwrt/target/linux/generic/pending-5.10/$PATCH_FILE
-        cp $GITHUB_WORKSPACE/opwrt-22.03.2/hw2add/$PATCH_FILE $GITHUB_WORKSPACE/openwrt/target/linux/generic/pending-5.15/$PATCH_FILE
+        # #cp $GITHUB_WORKSPACE/opwrt-22.03.2/hw2add/$PATCH_FILE $GITHUB_WORKSPACE/openwrt/target/linux/generic/pending-5.10/$PATCH_FILE
+        # #cp $GITHUB_WORKSPACE/opwrt-22.03.2/hw2add/$PATCH_FILE $GITHUB_WORKSPACE/openwrt/target/linux/generic/pending-5.15/$PATCH_FILE
 
 
     - name: Load custom feeds
@@ -145,7 +145,7 @@ jobs:
       run: |
         cd openwrt
         echo -e "$(nproc) thread compile"
-        make -j$(nproc) || make -j1 || make -j1 V=s
+        make -j$(nproc) || make -j1 || make -j1 V=sc
         echo "::set-output name=status::success"  
         #echo "status = success" >> $GITHUB_OUTPUT
         grep '^CONFIG_TARGET.*DEVICE.*=y' .config | sed -r 's/.*DEVICE_(.*)=y/\1/' > DEVICE_NAME
