@@ -78,19 +78,24 @@ jobs:
     - name: Upload Files for Hardware Changes 
       run: |
         # Upload 01_leds
-        cp -f $GITHUB_WORKSPACE/opwrt-22.03.3/hw2add/01_leds $GITHUB_WORKSPACE/openwrt/target/linux/ramips/mt7621/base-files/etc/board.d/01_leds
+        cp -f $GITHUB_WORKSPACE/opwrt-22.03.3/hw2add/01_leds $GITHUB_WORKSPACE/openwrt/target/linux/ramips/mt7621/base-files/etc/board.d
 
         # Upload 02_network
-        cp -f $GITHUB_WORKSPACE/opwrt-22.03.3/hw2add/02_network $GITHUB_WORKSPACE/openwrt/target/linux/ramips/mt7621/base-files/etc/board.d/02_network
+        cp -f $GITHUB_WORKSPACE/opwrt-22.03.3/hw2add/02_network $GITHUB_WORKSPACE/openwrt/target/linux/ramips/mt7621/base-files/etc/board.d
         
         # Upload kernel-defaults.mk
-        cp -f $GITHUB_WORKSPACE/opwrt-22.03.3/hw2add/kernel-defaults.mk $GITHUB_WORKSPACE/openwrt/include/kernel-defaults.mk
+        cp -f $GITHUB_WORKSPACE/opwrt-22.03.3/hw2add/kernel-defaults.mk $GITHUB_WORKSPACE/openwrt/include
         
         # Upload mt7621_xiaomi_mi-router-4a-gigabit-v2.dts
-        cp -f $GITHUB_WORKSPACE/opwrt-22.03.3/hw2add/mt7621_xiaomi_mi-router-4a-gigabit-v2.dts $GITHUB_WORKSPACE/openwrt/target/linux/ramips/dts/mt7621_xiaomi_mi-router-4a-gigabit-v2.dts
+        cp -f $GITHUB_WORKSPACE/opwrt-22.03.3/hw2add/mt7621_xiaomi_mi-router-4a-gigabit-v2.dts $GITHUB_WORKSPACE/openwrt/target/linux/ramips/dts
                                                                                                                       
         # Upload mt7621.mk
-        cp -f $GITHUB_WORKSPACE/opwrt-22.03.3/hw2add/mt7621.mk $GITHUB_WORKSPACE/openwrt/target/linux/ramips/image/mt7621.mk
+        cp -f $GITHUB_WORKSPACE/opwrt-22.03.3/hw2add/mt7621.mk $GITHUB_WORKSPACE/openwrt/target/linux/ramips/image
+
+        # SPI HW: 476-mtd-spi-nor-add-eon-en25q128
+        cp $GITHUB_WORKSPACE/opwrt-22.03.2/hw2add/$PATCH_FILE $GITHUB_WORKSPACE/openwrt/target/linux/generic/pending-5.10/$PATCH_FILE
+        cp $GITHUB_WORKSPACE/opwrt-22.03.2/hw2add/$PATCH_FILE $GITHUB_WORKSPACE/openwrt/target/linux/generic/pending-5.15/$PATCH_FILE
+
 
     - name: Load custom feeds
       run: |
