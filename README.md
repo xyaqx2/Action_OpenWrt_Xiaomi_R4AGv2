@@ -9,17 +9,14 @@ By the way, the password is password
 
 ### There are two types of firmware [releases](https://github.com/MrTaiKe/Action_OpenWrt_Xiaomi_R4AGv2/releases)
     1. CSW-LEDE-R22.10.1 Kernel 5.4.214 (use coolsnowwolf/lede R22.10.1)
-    2. Openwrt-v22.03.2 Kernel_5.10.146 (use openwrt stable releases v22.03.2)
-### Projects divided into two seperate folders:
-    1. LEDE
-    2. opwrt-22.03.2
+    2. Openwrt
+    
+### Projects divided into several folders:
+    1. LEDE and several version of opwrt-22.03.2 or  22.03.05 or 23.05, (v23.05 officially support R4AGv2)
     
 ![image](https://user-images.githubusercontent.com/117250841/200182184-1374ebfe-cca5-40fb-a7ca-4eaa1444f2f0.png)
 
-### - Note: LED lights NOT working properly.
-### - Packages added:
-  - https://github.com/kenzok8/small-package
-  - https://github.com/jerrykuku/luci-theme-argon.git
+### - Note: LED lights NOT working properly with 22.03.2 . (LED start working properly with/from Openwrt-v23.03.03 )
 
 ## How to built/Compile Openwrt firmware(bin)?
 If you want to learn about it, you can visit the followings:
@@ -33,6 +30,11 @@ If you want to learn about it, you can visit the followings:
     1. target/linux/ramips/dts/mt7621_xiaomi_mi-router-4a-gigabit-v2.dts
     2. target/linux/ramips/image/mt7621.mk
     3. target/linux/ramips/mt7621/base-files/etc/board.d/02_network
+       
+- NOTE: from 23.03.3, you can fix LEDs, check hw2add folder
+    1. target/linux/ramips/mt7621/base-files/etc/board.d/01_leds
+    2. /include/kernel-defaults.mk
+
 
 ## How to BREED flash Openwrt bin file?
 
