@@ -104,7 +104,7 @@ endef
 define Kernel/Configure/Default
 	rm -f $(LINUX_DIR)/localversion
 	$(LINUX_CONF_CMD) > $(LINUX_DIR)/.config.target
-# copy CONFIG_KERNEL_* settings over to .config.target
+    # copy CONFIG_KERNEL_* settings over to .config.target
 	awk '/^(#[[:space:]]+)?CONFIG_KERNEL/{sub("CONFIG_KERNEL_","CONFIG_");print}' $(TOPDIR)/.config >> $(LINUX_DIR)/.config.target
 	echo "# CONFIG_KALLSYMS_EXTRA_PASS is not set" >> $(LINUX_DIR)/.config.target
 	echo "# CONFIG_KALLSYMS_ALL is not set" >> $(LINUX_DIR)/.config.target
@@ -118,10 +118,9 @@ define Kernel/Configure/Default
 		cp $(LINUX_DIR)/.config.set $(LINUX_DIR)/.config.prev; \
 	}
 	$(_SINGLE) [ -d $(LINUX_DIR)/user_headers ] || $(KERNEL_MAKE) INSTALL_HDR_PATH=$(LINUX_DIR)/user_headers headers_install
-	# grep '=[ym]' $(LINUX_DIR)/.config.set | LC_ALL=C sort | $(MKHASH) md5 > $(LINUX_DIR)/.vermagic
-    grep '=[ym]' $(LINUX_DIR)/.config.set | LC_ALL=C sort | echo 2974fbe1fa59be88f13eb8abeac8c10b > $(LINUX_DIR)/.vermagic
+	#grep '=[ym]' $(LINUX_DIR)/.config.set | LC_ALL=C sort | $(MKHASH) md5 > $(LINUX_DIR)/.vermagic
+	grep '=[ym]' $(LINUX_DIR)/.config.set | LC_ALL=C sort | echo 2974fbe1fa59be88f13eb8abeac8c10b > $(LINUX_DIR)/.vermagic
 endef
-
 
 define Kernel/Configure/Initramfs
 	$(call Kernel/SetInitramfs)
